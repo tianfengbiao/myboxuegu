@@ -18,19 +18,19 @@
                     <span class="input-group-addon">
                         <i class="fa fa-user"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="用户名" name="tc_name">
+                    <input type="text" class="form-control" placeholder="用户名" name="tc_name" value="前端学院">
                 </div>
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon">
                         <i class="fa fa-key"></i>
                     </span>
-                    <input type="password" class="form-control" placeholder="密码" name="tc_pass">
+                    <input type="password" class="form-control" placeholder="密码" name="tc_pass" value="123456">
                 </div>
                 <button type="submit" class="btn btn-lg btn-primary btn-block">登 录</button>
             </form>
         </div>
     </div>
-    
+     <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/loading.html')?>
     <script src="/lib/requirejs/require-2.3.3.js" data-main="/js/common/main"></script>
 </body>
 </html>

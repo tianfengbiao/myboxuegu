@@ -25,13 +25,15 @@ require.config({
     util: 'js/common/util',
 
     // 第三方模块
-
+    template:'lib/artTemplate/template-native',
+    
     // 依赖jquery的
     jquery: 'lib/jquery/jquery.min',
     bootstrap: 'lib/bootstrap/js/bootstrap.min',
     jquery_form: 'lib/jquery-form/jquery.form',
-
+    jquery_cookie:'lib/jquery-cookie/jquery.cookie',
     // 不依赖jquery的
+    nprogress:'lib/nprogress/nprogress'
   },
 
   // 配置普通模块的依赖或者输出
