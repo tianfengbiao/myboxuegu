@@ -25,7 +25,7 @@ require.config({
     util: 'js/common/util',
 
     // 第三方模块
-    template:'lib/artTemplate/template-native',
+    template:'lib/artTemplate/template',
     
     // 依赖jquery的
     jquery: 'lib/jquery/jquery.min',
@@ -47,6 +47,7 @@ require.config({
 
 var obj = {
   '/': 'index',
+  '/index.html': 'index',
   '/html/home/login.html': 'login',
   '/html/home/repass.html': 'repass',
   '/html/home/settings.html': 'settings',
