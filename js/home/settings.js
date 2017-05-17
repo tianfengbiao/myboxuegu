@@ -76,6 +76,8 @@ define(['aside', 'header', 'util', 'bootstrap', 'jquery', 'jquery_form', 'nprogr
 			uploader: '/v6/uploader/avatar',
 			fileObjName:'tc_avatar',
 			fileTypeExts: '*.gif; *.jpg; *.png',
+			buttonText:'',
+			height:$('.preview').height(),
 			onUploadSuccess:function(file,data){
 				try{
 	$('#avatar').attr('src', JSON.parse(data).result.path);
