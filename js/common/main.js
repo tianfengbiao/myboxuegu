@@ -9,6 +9,7 @@ require.config({
     settings: 'js/home/settings',
     tcEdit: 'js/teacher/edit',
     tcList: 'js/teacher/list',
+    tcAdd: 'js/teacher/add', //后期添加页面，包括js&html
     usProfile: 'js/user/profile',
     usList: 'js/user/list',
     csAdd: 'js/course/add',
@@ -25,21 +26,33 @@ require.config({
     util: 'js/common/util',
 
     // 第三方模块
-    template:'lib/artTemplate/template',
-    
+    template: 'lib/artTemplate/template',
+    //注意是简洁模板引擎
     // 依赖jquery的
     jquery: 'lib/jquery/jquery.min',
     bootstrap: 'lib/bootstrap/js/bootstrap.min',
     jquery_form: 'lib/jquery-form/jquery.form',
-    jquery_cookie:'lib/jquery-cookie/jquery.cookie',
+    jquery_cookie: 'lib/jquery-cookie/jquery.cookie',
+    //区域插件。注意英译
+    jquery_region: 'lib/jquery-region/jquery.region',
+    jquery_datepicker: 'lib/jquery-bootstrap-datepicker/js/bootstrap-datepicker.min',
+    jquery_datepicker_CN: 'lib/jquery-bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+    jquery_uploadify: 'lib/uploadify/jquery.uploadify.min',
+
     // 不依赖jquery的
-    nprogress:'lib/nprogress/nprogress'
+    nprogress: 'lib/nprogress/nprogress'
   },
 
   // 配置普通模块的依赖或者输出
   shim: {
     // bootstrap是普通模块，但是依赖与jquery，所以这里配置
     bootstrap: {
+      deps: ['jquery']
+    },
+    	jquery_datepicker_CN: {
+      deps: ['jquery','jquery_datepicker']
+    },
+    jquery_uploadify: {
       deps: ['jquery']
     }
   },
@@ -53,10 +66,10 @@ var obj = {
   '/html/home/settings.html': 'settings',
   '/html/teacher/edit.html': 'tcEdit',
   '/html/teacher/list.html': 'tcList',
-  '/html/user/profile.html': 'usProfile',
+  '/html/teacher/add.html': 'tcAdd', //后期添加页面，包括js&html
   '/html/user/list.html': 'usList',
   '/html/course/add.html': 'csAdd',
-  '/html/course/list.html': 'usList',
+  '/html/course/list.html': 'csList',//有误，已改
   '/html/course/category_add.html': 'cgAdd',
   '/html/course/category_list.html': 'cgList',
   '/html/course/course_add_step1.html': 'csAdd1',

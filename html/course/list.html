@@ -24,7 +24,7 @@
                     <li class="active">课程列表</li>
                 </ol>
                 <div class="courses">
-                    <div class="course">
+                    <!--<div class="course">
                         <div class="pic">
                             <img src="./uploads/course_1.jpg" alt="">
                         </div>
@@ -155,13 +155,44 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
     </div>
 
-     <script src="/lib/requirejs/require-2.3.3.js" data-main="/js/common/main"></script>
+
+<script id="c-list" type="text/html">    
+{{each result}}
+     <div class="course">
+                        <div class="pic">
+                            <img src="{{$value.cs_cover?$value.cs_cover:'/img/course.png'}}" alt="">
+                        </div>
+                        <div class="info">
+                            <a href="javascript:;">{{$value.cs_name}}</a>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <span>讲师：{{$value.tc_name}}</span>
+                                    <span>类别：{{$value.cg_name}}</span>
+                                </li>
+                                <li>
+                                    <span>课时：32</span>
+                                    <span>学员：9999</span>
+                                </li>
+                                <li>
+                                    <span>浏览：11111</span>
+                                    <span></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{/each}}
+</script>
+
+
+
+
+    <script src="/lib/requirejs/require-2.3.3.js" data-main="/js/common/main"></script>
 </body>
 
 </html>

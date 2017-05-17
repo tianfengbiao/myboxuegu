@@ -16,10 +16,26 @@ var util={
       }).on('ajaxStop', function () {
         $('.overlay').hide();
       });
+    },
+
+    getSearch:function(searchKey){
+      var searchObj={},temp;
+      var searchArr=location.search.slice(1).split('&');
+      for(var i=0;i<searchArr.length;i++){
+        temp=searchArr[i].split('=');
+        searchObj[temp[0]]=temp[1];
+      }
+
+      return searchKey==null?searchObj:searchObj[searchKey];
     }
+
+
+
+
 };
 
 //当用util模块时。需要那个方法就传那个方法。
+// 传入所有要执行的方法名，格式范例：{'checkLoginStatus': [], 'fn2': [], ...}
 return function(methods){
  var returns={};
  for( var key in methods){
@@ -27,6 +43,7 @@ return function(methods){
  }
  // 所有方法的返回值一起返回
  return returns;
+ //这样returns={check:ud,load:ud,get:obj}
 }
 
 
