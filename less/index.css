@@ -728,3 +728,7 @@ a:focus {
   min-height: 240px;
   padding: 15px 10px;
 }
+/*添加样式*/
+#uploadify-button{
+  line-height: 20px !important;
+}
