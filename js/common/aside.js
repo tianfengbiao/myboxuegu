@@ -33,8 +33,8 @@ define(['jquery', 'jquery_cookie'], function ($, ud) {
   }; //该对象的作用是：对应的子页面给对应的用户user的a标签添加active类样式，如user下的profile.html。。类active应该给user的页面的a标签添加active样式。。
 
   var href = pathToHref[pathname] ? pathToHref[pathname] : pathname;
-  // console.log(href);
-  $('.aside a').removeClass('active').filter('[href="' + href + '"]').addClass('active');
+  // console.log(href);	// 被选中的元素所有的父元素显示，这个显示截止到navs为止
+  $('.aside a').removeClass('active').filter('[href="' + href + '"]').addClass('active').parentsUntil('.navs').slideDown();
 
 
 

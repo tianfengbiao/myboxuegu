@@ -38,9 +38,10 @@ require.config({
     jquery_datepicker: 'lib/jquery-bootstrap-datepicker/js/bootstrap-datepicker.min',
     jquery_datepicker_CN: 'lib/jquery-bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
     jquery_uploadify: 'lib/uploadify/jquery.uploadify.min',
-    jquery_Jcrop:'lib/jquery-Jcrop/js/Jcrop.min',
+    jquery_Jcrop:'lib/jquery-Jcrop/js/Jcrop.min',//还要引css
     // 不依赖jquery的
-    nprogress: 'lib/nprogress/nprogress'
+    nprogress: 'lib/nprogress/nprogress',
+    ckeditor:'/lib/ckeditor/ckeditor'
   },
 
   // 配置普通模块的依赖或者输出
@@ -57,7 +58,12 @@ require.config({
     },
     jquery_Jcrop:{
       deps:['jquery']
-    }
+    },
+    	// 非AMD模块，如果想按照正常的方式引入，必须配置exports属性值为该模块暴露的全局变量
+		ckeditor: {
+			exports: 'CKEDITOR'
+		}
+
   },
 });
 // 加载进度条库，然后start

@@ -1,4 +1,4 @@
-define(['aside', 'header', 'util', 'bootstrap', 'jquery', 'jquery_form', 'nprogress', 'template', 'jquery_region', 'jquery_datepicker', 'jquery_datepicker_CN', 'jquery_uploadify', ], function (ud1, ud2, util, ud3, $, ud4, nprogress, template, ud5, ud6, ud7, ud8) {
+define(['aside', 'header', 'util', 'bootstrap', 'jquery', 'jquery_form', 'nprogress', 'template', 'jquery_region', 'jquery_datepicker', 'jquery_datepicker_CN', 'jquery_uploadify', 'ckeditor'], function (ud1, ud2, util, ud3, $, ud4, nprogress, template, ud5, ud6, ud7, ud8,ckeditor) {
 	//载入齿轮和状态检测。。
 	var returns = util({
 		'checkLoginStatus': [],
@@ -13,6 +13,8 @@ define(['aside', 'header', 'util', 'bootstrap', 'jquery', 'jquery_form', 'nprogr
 
 		initDatepicker();
 		initUploadify();
+
+		initCkeditor();
 		console.log(1111);
 	})
 
@@ -89,7 +91,23 @@ define(['aside', 'header', 'util', 'bootstrap', 'jquery', 'jquery_form', 'nprogr
 		})
 	}
 
-
+//初始化副文本编辑器
+function initCkeditor(){
+	//该富文本编辑器提供一个replace方法，把textarea替换。
+		// 第二个参数为一个对象，可以进行配置。
+		// 对象有一个toolbarGroups配置 ，用来指定编辑器的功能列表。
+		editor=ckeditor.replace('ckeditor',{
+					toolbarGroups: [
+		        { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+		        { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+		        { name: 'links' },
+		        { name: 'insert' },
+		        { name: 'forms' },
+		        { name: 'tools' },
+		        { name: 'document',    groups: [ 'mode', 'document', 'doctools' ] }
+		    ]
+		})
+}
 
 
 
