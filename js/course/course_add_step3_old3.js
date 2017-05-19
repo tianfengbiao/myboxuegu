@@ -43,10 +43,26 @@ var ct_id=$(this).attr('data-ct-id');//注意step3.html中编辑也有此data-ct
       // console.log(ct_id)
       	$('#chapterModal').modal('hide');
       // location.reload();不推荐方法
-    // 重新获取课时列表整体渲染
- 				$.get('/v6/course/lesson', { cs_id: cs_id }, function(data){
-					$('.steps').html(template('step3',  data.result));
-				});
+    if(ct_id){//如果存在ct_id就改变编辑框的值
+      	// 更新缓存的数据
+ 					for(var i = 0, len = result.lessons.length; i < len; i++) {
+ 						if(result.lessons[i].ct_id === ct_id) {
+ 							result.lessons[i].ct_name = $('[name="ct_name"]').val();
+ 							result.lessons[i].ct_video_duration = $('[name="ct_minutes"]').val() + ':' + $('[name="ct_seconds"]').val();
+ 						}
+ 					}
+ 				
+
+    }else{//否则就是在后边添加数据
+     	result.lessons.push({
+						ct_id: data.result,
+						ct_name: $('[name="ct_name"]').val(),
+						ct_video_duration: $('[name="ct_minutes"]').val() + ':' + $('[name="ct_seconds"]').val()
+					});           
+    }
+
+	$('.steps').html(template('steps3-tpl', result));
+
     }
   });
 

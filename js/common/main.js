@@ -38,7 +38,7 @@ require.config({
     jquery_datepicker: 'lib/jquery-bootstrap-datepicker/js/bootstrap-datepicker.min',
     jquery_datepicker_CN: 'lib/jquery-bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
     jquery_uploadify: 'lib/uploadify/jquery.uploadify.min',
-
+    jquery_Jcrop:'lib/jquery-Jcrop/js/Jcrop.min',
     // 不依赖jquery的
     nprogress: 'lib/nprogress/nprogress'
   },
@@ -54,9 +54,16 @@ require.config({
     },
     jquery_uploadify: {
       deps: ['jquery']
+    },
+    jquery_Jcrop:{
+      deps:['jquery']
     }
   },
 });
+// 加载进度条库，然后start
+require(['nprogress'],function(){
+nprogress.start();
+})
 
 var obj = {
   '/': 'index',

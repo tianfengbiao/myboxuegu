@@ -6,12 +6,8 @@ define(['bootstrap','jquery','jquery_form','jquery_cookie','aside','header','uti
 	});
 //传入cs_id回显数据。渲染模板
   var cs_id=returns.getSearch;
-
-  var result=null;//为后面的modal的按钮使用字符串拼接。。
   $.get('/v6/course/lesson',{cs_id:cs_id},function(data){
-    result=data.result;//外面可以访问
     $('.steps').html(template('step3',data.result))
-
   })
 
 //通过 编辑和添加课时的data-ct-id属性是否存在来判断是编辑还是添加。。
@@ -43,10 +39,36 @@ var ct_id=$(this).attr('data-ct-id');//注意step3.html中编辑也有此data-ct
       // console.log(ct_id)
       	$('#chapterModal').modal('hide');
       // location.reload();不推荐方法
-    // 重新获取课时列表整体渲染
- 				$.get('/v6/course/lesson', { cs_id: cs_id }, function(data){
-					$('.steps').html(template('step3',  data.result));
-				});
+    if(ct_id){//如果存在ct_id就改变编辑框的值
+      	// 找到对应的父li
+ 					var li = $('a[data-ct-id="' + ct_id + '"]').parents('.lessons li');
+ 					// 通过父找到里面标题和时长的元素，重设值
+ 					li.find('.name').text($('[name="ct_name"]').val());
+ 					li.find('.duration').text($('[name="ct_minutes"]').val() + ':' + $('[name="ct_seconds"]').val());
+
+
+
+    }else{//否则就是在后边添加数据
+      //该老师拼接字符串与我模板拼接有冲突。效果有点小bug..不推荐用
+        	var html = 
+	 					'<li>' +
+	                        '<i class="fa fa-file-video-o"></i> ' +
+	                        '<span class="order">课时：' + ($('.lessons .list-unstyled li').length + 1) + '</span>' +
+	                        '<span class="name">' + $('[name="ct_name"]').val() + '</span>' +
+	                        '<span class="duration">' + $('[name="ct_minutes"]').val() + ':' + $('[name="ct_seconds"]').val() + '</span>' +
+	                        '<div class="action pull-right">' +
+	                            '<a href="javascript:;" data-ct-id="' + data.result + '" class="btn btn-info btn-xs btn-ct-edit" data-toggle="modal" data-target="#chapterModal">编辑</a>' +
+	                            '<a href="javascript:;" class="btn btn-info btn-xs">预览</a>' +
+	                            '<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>' +
+	                        '</div>' +
+	                    '</li>';
+
+                  
+                    $('.lessons .list-unstyled').append(html);
+    }
+
+
+
     }
   });
 
