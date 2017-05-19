@@ -61,7 +61,7 @@ require.config({
   },
 });
 // 加载进度条库，然后start
-require(['nprogress'],function(){
+require(['nprogress'],function(nprogress){
 nprogress.start();
 })
 
